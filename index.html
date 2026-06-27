@@ -69,7 +69,7 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f7f2f2;min-height
 .layout-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
 .layout-btn{border-radius:14px;border:3px solid #ddd;background:#fff;cursor:pointer;text-align:center;transition:all .18s;overflow:hidden;position:relative}
 .layout-btn.selected{border-color:var(--red);box-shadow:0 4px 16px rgba(122,16,16,.2)}
-.layout-img{width:100%;height:220px;object-fit:cover;display:block;background:#f0e8e8;cursor:zoom-in}
+.layout-img{width:100%;height:auto;min-height:160px;max-height:340px;object-fit:contain;display:block;background:#f5f0f0;padding:8px}
 .layout-info{padding:10px 8px 12px}
 .layout-btn .lname{font-weight:800;font-size:14px;color:#1a1a1a}
 .layout-btn .lposes{font-size:11px;color:#999;margin-top:3px}
@@ -99,9 +99,9 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
 .sleeve-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
 .sleeve-card{cursor:pointer;border-radius:14px;overflow:hidden;border:3px solid transparent;box-shadow:0 2px 8px rgba(0,0,0,.08);background:#fff;transition:all .18s}
 .sleeve-card.selected{border-color:var(--red);box-shadow:0 4px 16px rgba(122,16,16,.2)}
-.sleeve-img-wrap{position:relative;height:130px;background:#f0e8e8}
-.sleeve-img{width:100%;height:130px;object-fit:cover;display:block;cursor:zoom-in}
-.sleeve-check{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--red);display:none;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800}
+.sleeve-img-wrap{position:relative;height:80px;background:#f0e8e8}
+.sleeve-img{width:100%;height:80px;object-fit:cover;display:block;cursor:zoom-in}
+.sleeve-check{position:absolute;top:5px;right:5px;width:20px;height:20px;border-radius:50%;background:var(--red);display:none;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800}
 .sleeve-card.selected .sleeve-check{display:flex}
 .sleeve-name{padding:10px;text-align:center;font-size:13px;font-weight:700;color:#1a1a1a}
 
@@ -154,6 +154,24 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
 .opt-label{font-size:12px;color:#aaa;text-align:center;margin-bottom:10px;font-style:italic}
 .field-label{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:6px;margin-top:14px}
 .gb-note{font-size:11px;color:#999;line-height:1.7;margin-top:6px}
+
+/* Setup req cards */
+.req-card{display:flex;gap:14px;background:#fff;border:1px solid #ede0e0;border-radius:14px;padding:14px 16px;align-items:flex-start}
+.req-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.req-content{}
+.req-title{font-weight:800;font-size:14px;color:#1a1a1a;margin-bottom:4px}
+.req-desc{font-size:13px;color:#555;line-height:1.7}
+.req-desc strong{color:#1a1a1a}
+/* T&C */
+.tnc-box{background:#fff;border:1px solid #ede0e0;border-radius:16px;overflow:hidden;margin-bottom:16px}
+.tnc-section{display:flex;gap:0;border-bottom:1px solid #f0e8e8;margin-bottom:0}
+.tnc-num{width:44px;flex-shrink:0;background:var(--red);color:#fff;font-weight:900;font-size:16px;display:flex;align-items:flex-start;justify-content:center;padding:16px 0}
+.tnc-body{flex:1;padding:14px 16px 16px}
+.tnc-title{font-weight:800;font-size:14px;color:#1a1a1a;margin-bottom:10px;letter-spacing:.01em}
+.tnc-item{font-size:13px;color:#555;line-height:1.75;padding:3px 0;padding-left:14px;position:relative}
+.tnc-item::before{content:"•";position:absolute;left:0;color:var(--red);font-weight:800}
+.tnc-item strong{color:#1a1a1a;font-weight:700}
+
 </style>
 </head>
 <body>
@@ -185,7 +203,12 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
   <!-- STEP 0: Package -->
   <div class="panel active" id="panel0">
     <div class="package-card">
-      <img class="package-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/12.png" alt="Standard Package" onclick="openLightbox(this.src,'Standard Package')" style="max-height:300px"/>
+      <img class="package-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/12.png" alt="Standard Package" style="max-height:300px;cursor:default"/>
+      <div style="background:#fff8f8;padding:12px 20px 10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid #f0e0e0">
+        <div style="font-size:13px;color:#aaa;text-decoration:line-through;font-weight:500">Original RM999</div>
+        <div style="font-size:20px;font-weight:900;color:var(--red)">Grand Opening RM799<span style="font-size:11px;font-weight:600">*</span></div>
+        <div style="font-size:11px;color:var(--red-mid);font-style:italic;background:#ffe8e8;padding:3px 8px;border-radius:10px">* While quota lasts</div>
+      </div>
       <div class="package-header">
         <div><div class="name">Standard Package</div><div class="sub2">Auto-selected · All inclusive</div></div>
         <div class="check">✓</div>
@@ -198,14 +221,16 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
   <div class="panel" id="panel1">
     <div class="opt-label">All add-ons are optional — tap to select</div>
 
-    <div class="addon-card" id="card-upgrade4r">
-      <div class="addon-header" onclick="toggleAddon('upgrade4r')">
-        <img class="addon-thumb" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Upgrade%204R.png" alt="Upgrade 4R" onclick="event.stopPropagation();openLightbox(this.src,'Upgrade to 4R Photo')"/>
-        <div class="addon-text">
+    <!-- a. Upgrade 4R -->
+    <div class="addon-card" id="card-upgrade4r" onclick="toggleAddon('upgrade4r')">
+      <div class="addon-selected-badge">✓ Selected</div>
+      <div style="display:flex;align-items:stretch">
+        <img class="addon-big-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Upgrade%204R.png" alt="Upgrade 4R" style="width:140px;height:140px;object-fit:cover;flex-shrink:0" onclick="event.stopPropagation();openLightbox(this.src,'Upgrade to 4R Photo')"/>
+        <div class="addon-body-top" style="flex:1;display:flex;flex-direction:column;justify-content:center">
           <div class="aname">Upgrade to 4R Photo</div>
           <div class="aprice">RM300</div>
         </div>
-        <div class="addon-cb"><div class="cb" id="cb-upgrade4r"></div></div>
+        <div class="addon-cb-corner"><div class="cb" id="cb-upgrade4r"></div></div>
       </div>
       <div class="addon-body" id="body-upgrade4r">
         <div class="addon-feat"><span class="s">★</span><span>UNLIMITED 4R PHOTO PRINTING</span></div>
@@ -214,34 +239,41 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
       </div>
     </div>
 
-    <div class="addon-card" id="card-extratime">
-      <div class="addon-header" onclick="toggleAddon('extratime')">
-        <img class="addon-thumb" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Extra%20Time.png" alt="Extra Time" onclick="event.stopPropagation();openLightbox(this.src,'Extra Time')"/>
-        <div class="addon-text">
+    <!-- b. Extra Time -->
+    <div class="addon-card" id="card-extratime" onclick="toggleAddon('extratime')">
+      <div class="addon-selected-badge">✓ Selected</div>
+      <div style="display:flex;align-items:stretch">
+        <img class="addon-big-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Extra%20Time.png" alt="Extra Time" style="width:140px;height:140px;object-fit:cover;flex-shrink:0" onclick="event.stopPropagation();openLightbox(this.src,'Extra Time')"/>
+        <div class="addon-body-top" style="flex:1;display:flex;flex-direction:column;justify-content:center">
           <div class="aname">Extra Time</div>
-          <div class="aprice" id="extratime-price">RM150</div>
-          <div class="anote" id="extratime-note">Priced at RM150 without 4R upgrade</div>
+          <div style="display:flex;gap:10px;margin-top:4px;flex-wrap:wrap">
+            <div style="font-size:12px;background:var(--red-light);color:var(--red);border-radius:8px;padding:3px 10px;font-weight:700">2x6 — RM150</div>
+            <div style="font-size:12px;background:var(--red-light);color:var(--red);border-radius:8px;padding:3px 10px;font-weight:700">4x6 — RM200</div>
+          </div>
+          <div class="anote" id="extratime-note" style="margin-top:5px">Price based on print size selected</div>
         </div>
-        <div class="addon-cb"><div class="cb" id="cb-extratime"></div></div>
+        <div class="addon-cb-corner"><div class="cb" id="cb-extratime"></div></div>
       </div>
     </div>
 
-    <div class="addon-card" id="card-guestbook">
-      <div class="addon-header" onclick="toggleAddon('guestbook')">
-        <img class="addon-thumb" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Photobook.png" alt="Photo Guestbook" onclick="event.stopPropagation();openLightbox(this.src,'Photo Guestbook')"/>
-        <div class="addon-text">
+    <!-- c. Photo Guestbook -->
+    <div class="addon-card" id="card-guestbook" onclick="toggleAddon('guestbook')">
+      <div class="addon-selected-badge">✓ Selected</div>
+      <div style="display:flex;align-items:stretch">
+        <img class="addon-big-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Photobook.png" alt="Photo Guestbook" style="width:140px;height:140px;object-fit:cover;flex-shrink:0" onclick="event.stopPropagation();openLightbox(this.src,'Photo Guestbook')"/>
+        <div class="addon-body-top" style="flex:1;display:flex;flex-direction:column;justify-content:center">
           <div class="aname">Photo Guestbook</div>
-          <div class="aprice" style="font-size:12px;color:#aaa;font-weight:400">From RM70</div>
+          <div style="font-size:12px;color:#aaa;margin-top:4px">From RM70</div>
         </div>
-        <div class="addon-cb"><div class="cb" id="cb-guestbook"></div></div>
+        <div class="addon-cb-corner"><div class="cb" id="cb-guestbook"></div></div>
       </div>
       <div class="addon-body" id="body-guestbook">
         <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px">Select type (required):</div>
         <div class="type-row">
-          <div class="type-btn selected" id="gb-standard" onclick="setGbType('standard')"><div class="tname">Standard</div><div class="tprice">RM70</div></div>
-          <div class="type-btn" id="gb-custom" onclick="setGbType('custom')"><div class="tname">Customization</div><div class="tprice">RM100</div></div>
+          <div class="type-btn selected" id="gb-standard" onclick="event.stopPropagation();setGbType('standard')"><div class="tname">Standard</div><div class="tprice">RM70</div></div>
+          <div class="type-btn" id="gb-custom" onclick="event.stopPropagation();setGbType('custom')"><div class="tname">Customization</div><div class="tprice">RM100</div></div>
         </div>
-        <label class="agree-line" style="margin-top:0;border:none;padding:0;background:none" onclick="toggleMatte()">
+        <label class="agree-line" style="margin-top:0;border:none;padding:0;background:none" onclick="event.stopPropagation();toggleMatte()">
           <div class="cb cb-sm" id="cb-matte"></div>
           <span style="font-size:13px;color:#444;font-weight:400">Matte Cover <strong style="color:var(--red)">+RM15</strong> (optional)</span>
         </label>
@@ -249,25 +281,44 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
       </div>
     </div>
 
-    <div class="addon-card" id="card-keychain">
-      <div class="addon-header" onclick="toggleAddon('keychain')">
-        <img class="addon-thumb" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/KeyChain.png" alt="Photo Keychain" onclick="event.stopPropagation();openLightbox(this.src,'Photo Keychain')"/>
-        <div class="addon-text">
+    <!-- d. Photo Keychain -->
+    <div class="addon-card" id="card-keychain" onclick="toggleAddon('keychain')">
+      <div class="addon-selected-badge">✓ Selected</div>
+      <div style="display:flex;align-items:stretch">
+        <img class="addon-big-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/KeyChain.png" alt="Photo Keychain" style="width:140px;height:140px;object-fit:cover;flex-shrink:0" onclick="event.stopPropagation();openLightbox(this.src,'Photo Keychain')"/>
+        <div class="addon-body-top" style="flex:1;display:flex;flex-direction:column;justify-content:center">
           <div class="aname">Photo Keychain</div>
-          <div class="aprice" style="font-size:12px;color:#aaa;font-weight:400">From RM300</div>
+          <div style="font-size:12px;color:#aaa;margin-top:4px">MOQ 100 pcs</div>
         </div>
-        <div class="addon-cb"><div class="cb" id="cb-keychain"></div></div>
+        <div class="addon-cb-corner"><div class="cb" id="cb-keychain"></div></div>
       </div>
       <div class="addon-body" id="body-keychain">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px">Select quantity:</div>
-        <div class="qty-row">
-          <div class="qty-pill selected" onclick="setKc('100','RM300')" id="kc-100"><div class="qn">100 pcs</div><div class="qp">RM300</div></div>
-          <div class="qty-pill" onclick="setKc('200','RM550')" id="kc-200"><div class="qn">200 pcs</div><div class="qp">RM550</div></div>
-          <div class="qty-pill" onclick="setKc('300','RM800')" id="kc-300"><div class="qn">300 pcs</div><div class="qp">RM800</div></div>
-          <div class="qty-pill" onclick="setKc('More','Contact us')" id="kc-More"><div class="qn">More</div><div class="qp">Contact us</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px">Select quantity &amp; enter amount:</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-100" onclick="event.stopPropagation();setKcRow('100','RM300')">
+            <div class="cb cb-sm" id="kc-cb-100"></div>
+            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">100 pcs</div><div style="font-size:12px;color:var(--red);font-weight:600">RM300</div></div>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-200" onclick="event.stopPropagation();setKcRow('200','RM550')">
+            <div class="cb cb-sm" id="kc-cb-200"></div>
+            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">200 pcs</div><div style="font-size:12px;color:var(--red);font-weight:600">RM550</div></div>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-300" onclick="event.stopPropagation();setKcRow('300','RM800')">
+            <div class="cb cb-sm" id="kc-cb-300"></div>
+            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">300 pcs</div><div style="font-size:12px;color:var(--red);font-weight:600">RM800</div></div>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-more" onclick="event.stopPropagation();setKcRow('More','Contact us')">
+            <div class="cb cb-sm" id="kc-cb-more"></div>
+            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">More</div><div style="font-size:12px;color:var(--red);font-weight:600">Contact us</div></div>
+          </label>
+        </div>
+        <div style="margin-top:12px">
+          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px">Enter quantity (optional):</div>
+          <input type="number" id="kcCustomQty" min="100" placeholder="e.g. 150" onclick="event.stopPropagation()" style="width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid #e0d0d0;background:#f8f5f5;font-size:14px;color:#333;outline:none;font-family:inherit"/>
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- STEP 2: Layout -->
@@ -339,13 +390,50 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
 
   <!-- STEP 6: Setup -->
   <div class="panel" id="panel6">
-    <div class="scroll-box">• Client must provide a setup area with a minimum space of 10ft x 10ft, minimal natural light, a power point within 10 metres, a clean and dry flat floor, and adequate ventilation. A photo of the setup location must be submitted to LOVEA in advance.
-
-• LOVEA reserves the right to modify or reject the setup if the requirements are not met. Any lighting, exposure, or image quality issues caused by unsuitable setup conditions will not be accepted as complaints.
-
-• Outdoor or semi-outdoor setups must be fully sheltered from rain and unsafe conditions. Operations will stop immediately if safety is compromised. No refunds, extensions, or compensation will be provided for weather-related or unsuitable venue disruptions.
-
-• LOVEA crew has full discretion over session flow, queue management, retakes, and printing operations to maintain service quality. Clients must communicate any specific event schedule or requirements in advance or on-site. LOVEA is not liable for issues arising from insufficient briefing.</div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px">
+      <div class="req-card">
+        <div class="req-icon">📐</div>
+        <div class="req-content">
+          <div class="req-title">Space & Environment</div>
+          <div class="req-desc">Minimum setup area of <strong>10ft × 10ft</strong>, with minimal natural light, a clean and dry flat floor, and adequate ventilation.</div>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-icon">🔌</div>
+        <div class="req-content">
+          <div class="req-title">Power Supply</div>
+          <div class="req-desc">A power point must be available <strong>within 10 metres</strong> of the setup area.</div>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-icon">📸</div>
+        <div class="req-content">
+          <div class="req-title">Location Photo Required</div>
+          <div class="req-desc">A photo of the setup location must be submitted to LOVEA in advance for approval.</div>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-icon">⛅</div>
+        <div class="req-content">
+          <div class="req-title">Outdoor / Semi-Outdoor</div>
+          <div class="req-desc">Must be <strong>fully sheltered</strong> from rain and unsafe conditions. Operations will stop if safety is compromised. No refunds or extensions for weather-related disruptions.</div>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-icon">👥</div>
+        <div class="req-content">
+          <div class="req-title">Crew Discretion</div>
+          <div class="req-desc">LOVEA crew has full discretion over session flow, queue management, retakes, and printing. Please communicate your event schedule in advance. LOVEA is not liable for issues due to insufficient briefing.</div>
+        </div>
+      </div>
+      <div class="req-card" style="background:#fff8f0;border-color:#f0d0a0">
+        <div class="req-icon">⚠️</div>
+        <div class="req-content">
+          <div class="req-title" style="color:#c06000">Non-Compliance Notice</div>
+          <div class="req-desc">LOVEA reserves the right to modify or reject setup if requirements are not met. Lighting or image quality issues caused by unsuitable conditions will not be accepted as complaints.</div>
+        </div>
+      </div>
+    </div>
     <div class="agree-line" id="agree-setup" onclick="toggleAgree('setup')">
       <div class="cb" id="cb-setup"></div>
       <span>I understand and agree to the setup requirements</span>
@@ -362,55 +450,79 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
       <div class="summary-row"><span class="k">Backdrop</span><span class="v" id="sum-backdrop">-</span></div>
       <div class="summary-row"><span class="k">Sleeve</span><span class="v" id="sum-sleeve">-</span></div>
     </div>
-    <div class="scroll-box" style="height:220px">1. Booking & Payment
-
-• RM200 deposit is required to secure the booking date.
-• Deposit payment confirms acceptance of the quotation and these Terms & Conditions.
-• Quotations are valid for 7 days and subject to date availability.
-• Full balance must be paid at least 7 days before the event.
-• Bookings made within 5 working days of the event are subject to a 15% surcharge and require full payment.
-• Corporate or government bookings require an approved PO, LOU, or Confirmation Letter.
-• Deposits are non-refundable.
-
-2. Photos, Videos & Backdrops
-
-• Digital files will be shared via an online gallery available for 30 days. Clients are responsible for downloading and backing up their files.
-• LOVEA may use event content for marketing purposes unless otherwise requested.
-• One standard backdrop is included per booking, subject to availability.
-• Custom backdrop orders require full payment and are non-refundable once approved.
-• Any damage caused to LOVEA backdrops, equipment, or materials by clients or guests will be chargeable.
-
-3. Additional Charges
-
-• Items or services not included in the package will be charged separately.
-• Transportation is complimentary within 50km of LOVEA's base location. Additional distance is charged at RM3/km.
-• Early setup requests and last-minute add-ons may incur additional charges.
-
-4. Branding & Design
-
-• LOVEA branding may not be removed unless a removal fee applies.
-• Up to 3 design drafts and 2 revisions are included.
-• Additional revisions or design requests are chargeable.
-• Design discussions are available during business hours only.
-
-5. Person In Charge (PIC)
-
-• Clients must appoint a reachable Person In Charge (PIC) during setup and event operations.
-• Changes requested within 24 hours of the event may not be accommodated.
-• Failure to respond to final confirmation may be treated as a cancellation.
-
-6. Force Majeure
-
-• LOVEA is not liable for delays or service interruptions caused by circumstances beyond reasonable control, including weather, power failures, internet disruptions, government restrictions, venue limitations, or other unforeseen events.
-• No refunds will be provided under such circumstances.
-
-7. Refunds, Damage & Complaints
-
-• Refunds are only available if cancellation is initiated by LOVEA.
-• Client cancellations are non-refundable but may be rescheduled within 1 year, subject to availability.
-• Any service issues must be reported during the event for review.
-• Clients are responsible for any loss or damage caused by themselves, guests, venue staff, or third parties.
-• LOVEA reserves the right to assess and charge for any repair or replacement costs arising from such damage.</div>
+    <div class="tnc-box">
+      <div class="tnc-section">
+        <div class="tnc-num">1</div>
+        <div class="tnc-body">
+          <div class="tnc-title">Booking & Payment</div>
+          <div class="tnc-item">RM200 deposit is required to secure the booking date.</div>
+          <div class="tnc-item">Deposit payment confirms acceptance of the quotation and these Terms & Conditions.</div>
+          <div class="tnc-item">Quotations are valid for 7 days and subject to date availability.</div>
+          <div class="tnc-item">Full balance must be paid at least 7 days before the event.</div>
+          <div class="tnc-item">Bookings made within 5 working days of the event are subject to a <strong>15% surcharge</strong> and require full payment.</div>
+          <div class="tnc-item">Corporate or government bookings require an approved PO, LOU, or Confirmation Letter.</div>
+          <div class="tnc-item">Deposits are <strong>non-refundable</strong>.</div>
+        </div>
+      </div>
+      <div class="tnc-section">
+        <div class="tnc-num">2</div>
+        <div class="tnc-body">
+          <div class="tnc-title">Photos, Videos & Backdrops</div>
+          <div class="tnc-item">Digital files will be shared via an online gallery available for <strong>30 days</strong>. Clients are responsible for downloading and backing up their files.</div>
+          <div class="tnc-item">LOVEA may use event content for marketing purposes unless otherwise requested.</div>
+          <div class="tnc-item">One standard backdrop is included per booking, subject to availability.</div>
+          <div class="tnc-item">Custom backdrop orders require full payment and are non-refundable once approved.</div>
+          <div class="tnc-item">Any damage caused to LOVEA backdrops, equipment, or materials by clients or guests will be chargeable.</div>
+        </div>
+      </div>
+      <div class="tnc-section">
+        <div class="tnc-num">3</div>
+        <div class="tnc-body">
+          <div class="tnc-title">Additional Charges</div>
+          <div class="tnc-item">Items or services not included in the package will be charged separately.</div>
+          <div class="tnc-item">Transportation is complimentary within <strong>50km</strong> of LOVEA's base location. Additional distance is charged at RM3/km.</div>
+          <div class="tnc-item">Early setup requests and last-minute add-ons may incur additional charges.</div>
+        </div>
+      </div>
+      <div class="tnc-section">
+        <div class="tnc-num">4</div>
+        <div class="tnc-body">
+          <div class="tnc-title">Branding & Design</div>
+          <div class="tnc-item">LOVEA branding may not be removed unless a removal fee applies.</div>
+          <div class="tnc-item">Up to <strong>3 design drafts</strong> and <strong>2 revisions</strong> are included.</div>
+          <div class="tnc-item">Additional revisions or design requests are chargeable.</div>
+          <div class="tnc-item">Design discussions are available during business hours only.</div>
+        </div>
+      </div>
+      <div class="tnc-section">
+        <div class="tnc-num">5</div>
+        <div class="tnc-body">
+          <div class="tnc-title">Person In Charge (PIC)</div>
+          <div class="tnc-item">Clients must appoint a reachable PIC during setup and event operations.</div>
+          <div class="tnc-item">Changes requested within <strong>24 hours</strong> of the event may not be accommodated.</div>
+          <div class="tnc-item">Failure to respond to final confirmation may be treated as a cancellation.</div>
+        </div>
+      </div>
+      <div class="tnc-section">
+        <div class="tnc-num">6</div>
+        <div class="tnc-body">
+          <div class="tnc-title">Force Majeure</div>
+          <div class="tnc-item">LOVEA is not liable for delays caused by weather, power failures, internet disruptions, government restrictions, venue limitations, or other unforeseen events.</div>
+          <div class="tnc-item">No refunds will be provided under such circumstances.</div>
+        </div>
+      </div>
+      <div class="tnc-section" style="border-bottom:none;margin-bottom:0;padding-bottom:0">
+        <div class="tnc-num">7</div>
+        <div class="tnc-body">
+          <div class="tnc-title">Refunds, Damage & Complaints</div>
+          <div class="tnc-item">Refunds are only available if cancellation is initiated by LOVEA.</div>
+          <div class="tnc-item">Client cancellations are non-refundable but may be rescheduled within <strong>1 year</strong>, subject to availability.</div>
+          <div class="tnc-item">Any service issues must be reported during the event for review.</div>
+          <div class="tnc-item">Clients are responsible for any loss or damage caused by themselves, guests, venue staff, or third parties.</div>
+          <div class="tnc-item">LOVEA reserves the right to assess and charge for any repair or replacement costs.</div>
+        </div>
+      </div>
+    </div>
     <div class="agree-line" id="agree-terms" onclick="toggleAgree('terms')">
       <div class="cb" id="cb-terms"></div>
       <span>I have read and agree to the Terms &amp; Conditions</span>
@@ -535,7 +647,7 @@ function renderLayouts(){
     <div class="layout-btn ${selectedLayout===l.id?'selected':''}" onclick="selectLayout('${l.id}',event)">
       <div style="position:relative">
         <img class="layout-img" src="${ghimg(l.img)}" alt="${l.name}" onclick="event.stopPropagation();openLightbox(this.src,'${l.name} · ${l.poses}')"/>
-        <div class="zoom-hint">🔍 Tap to zoom</div>
+        
       </div>
       <div class="layout-info">
         <div class="lname">${l.name}</div>
@@ -641,6 +753,16 @@ function toggleAddon(id){
 function setGbType(v){gbType=v;document.getElementById("gb-standard").classList.toggle("selected",v==="standard");document.getElementById("gb-custom").classList.toggle("selected",v==="custom");}
 function toggleMatte(){gbMatte=!gbMatte;document.getElementById("cb-matte").classList.toggle("checked",gbMatte);}
 function setKc(qty,price){kcQty=qty;kcPrice=price;["100","200","300","More"].forEach(q=>document.getElementById("kc-"+q).classList.toggle("selected",q===qty));}
+function setKcRow(qty,price){
+  kcQty=qty; kcPrice=price;
+  ["100","200","300","more"].forEach(q=>{
+    const row=document.getElementById("kc-row-"+q);
+    const cb=document.getElementById("kc-cb-"+q);
+    const sel=q===qty.toLowerCase();
+    if(row){row.style.borderColor=sel?"var(--red)":"#ddd";row.style.background=sel?"var(--red-light)":"#fafafa";}
+    if(cb){cb.classList.toggle("checked",sel);}
+  });
+}
 function selectLayout(id,e){
   selectedLayout=id;
   document.querySelectorAll(".layout-btn").forEach(b=>b.classList.remove("selected"));
