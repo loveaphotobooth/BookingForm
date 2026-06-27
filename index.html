@@ -96,14 +96,14 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
 .icon-box{height:100px;display:flex;align-items:center;justify-content:center;font-size:26px;background:#f0e8e8}
 
 /* Sleeve - bigger */
-.sleeve-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+.sleeve-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
 .sleeve-card{cursor:pointer;border-radius:14px;overflow:hidden;border:3px solid transparent;box-shadow:0 2px 8px rgba(0,0,0,.08);background:#fff;transition:all .18s}
 .sleeve-card.selected{border-color:var(--red);box-shadow:0 4px 16px rgba(122,16,16,.2)}
-.sleeve-img-wrap{position:relative;height:50px;background:#f0e8e8}
-.sleeve-img{width:100%;height:50px;object-fit:cover;display:block;cursor:zoom-in}
+.sleeve-img-wrap{position:relative;height:38px;background:#f0e8e8}
+.sleeve-img{width:100%;height:38px;object-fit:cover;display:block;cursor:zoom-in}
 .sleeve-check{position:absolute;top:5px;right:5px;width:20px;height:20px;border-radius:50%;background:var(--red);display:none;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800}
 .sleeve-card.selected .sleeve-check{display:flex}
-.sleeve-name{padding:10px;text-align:center;font-size:13px;font-weight:700;color:#1a1a1a}
+.sleeve-name{padding:6px 4px;text-align:center;font-size:11px;font-weight:700;color:#1a1a1a}
 
 /* Lightbox */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:20px}
@@ -208,7 +208,7 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
   <!-- STEP 0: Package -->
   <div class="panel active" id="panel0">
     <div class="package-card">
-      <img class="package-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/12.png" alt="Standard Package" style="max-height:200px;cursor:default;object-position:top"/>
+      <img class="package-img" src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/12.png" alt="Standard Package" style="max-height:180px;cursor:default;object-position:center;width:100%;object-fit:cover"/>
       <div style="background:#fff8f8;padding:12px 20px 10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid #f0e0e0">
         <div style="font-size:13px;color:#aaa;text-decoration:line-through;font-weight:500">Original RM999</div>
         <div style="font-size:20px;font-weight:900;color:var(--red)">Grand Opening RM799<span style="font-size:11px;font-weight:600">*</span></div>
@@ -225,33 +225,33 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
   <!-- STEP 1: Add-ons -->
   <div class="panel" id="panel1">
     <div class="opt-label">All add-ons are optional — tap to select</div>
-    <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
 
     <!-- a. Upgrade 4R -->
     <div class="addon-card" id="card-upgrade4r" onclick="toggleAddon('upgrade4r')" style="border-radius:16px;border:3px solid transparent;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;transition:all .18s;cursor:pointer;position:relative;background:#fff">
       <div class="addon-selected-badge">✓ Selected</div>
-      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Upgrade%204R.png" alt="Upgrade 4R" style="width:100%;height:200px;object-fit:cover;display:block;object-position:center" onclick="event.stopPropagation();openLightbox(this.src,'Upgrade to 4R Photo')"/>
-      <div style="padding:14px 16px 14px;position:relative">
-        <div style="font-weight:800;font-size:15px;color:#1a1a1a">Upgrade to 4R Photo</div>
-        <div style="font-size:14px;color:var(--red);font-weight:700;margin-top:3px">RM300</div>
+      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Upgrade%204R.png" alt="Upgrade 4R" style="width:100%;height:160px;object-fit:cover;display:block" onclick="event.stopPropagation();openLightbox(this.src,'Upgrade to 4R Photo')"/>
+      <div style="padding:12px 12px 12px;position:relative;min-height:70px">
+        <div style="font-weight:800;font-size:13px;color:#1a1a1a">Upgrade to 4R Photo</div>
+        <div style="font-size:13px;color:var(--red);font-weight:700;margin-top:2px">RM300</div>
         <div class="addon-cb-corner"><div class="cb" id="cb-upgrade4r"></div></div>
       </div>
       <div class="addon-body" id="body-upgrade4r">
-        <div class="addon-feat"><span class="s">★</span><span>UNLIMITED 4R PHOTO PRINTING</span></div>
+        <div class="addon-feat"><span class="s">★</span><span>UNLIMITED 4R PRINTING</span></div>
         <div class="addon-feat"><span class="s">★</span><span>FREE LAYOUT CUSTOMISATION</span></div>
-        <div class="addon-feat"><span class="s">★</span><span>STANDARD 4R PHOTO SLEEVES</span></div>
+        <div class="addon-feat"><span class="s">★</span><span>STANDARD 4R SLEEVES</span></div>
       </div>
     </div>
 
     <!-- b. Extra Time -->
     <div class="addon-card" id="card-extratime" onclick="toggleAddon('extratime')" style="border-radius:16px;border:3px solid transparent;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;transition:all .18s;cursor:pointer;position:relative;background:#fff">
       <div class="addon-selected-badge">✓ Selected</div>
-      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Extra%20Time.png" alt="Extra Time" style="width:100%;height:200px;object-fit:cover;display:block" onclick="event.stopPropagation();openLightbox(this.src,'Extra Time')"/>
-      <div style="padding:14px 16px 14px;position:relative">
-        <div style="font-weight:800;font-size:15px;color:#1a1a1a">Extra Time</div>
-        <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
-          <div style="font-size:12px;background:var(--red-light);color:var(--red);border-radius:8px;padding:4px 12px;font-weight:700">2x6 — RM150</div>
-          <div style="font-size:12px;background:var(--red-light);color:var(--red);border-radius:8px;padding:4px 12px;font-weight:700">4x6 — RM200</div>
+      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Extra%20Time.png" alt="Extra Time" style="width:100%;height:160px;object-fit:cover;display:block" onclick="event.stopPropagation();openLightbox(this.src,'Extra Time')"/>
+      <div style="padding:12px 12px 12px;position:relative;min-height:70px">
+        <div style="font-weight:800;font-size:13px;color:#1a1a1a">Extra Time</div>
+        <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap">
+          <div style="font-size:10px;background:var(--red-light);color:var(--red);border-radius:6px;padding:2px 7px;font-weight:700">2x6 RM150</div>
+          <div style="font-size:10px;background:var(--red-light);color:var(--red);border-radius:6px;padding:2px 7px;font-weight:700">4x6 RM200</div>
         </div>
         <div class="addon-cb-corner"><div class="cb" id="cb-extratime"></div></div>
       </div>
@@ -260,58 +260,58 @@ input[type=number]{width:100%;padding:10px 12px;border-radius:8px;border:1.5px s
     <!-- c. Photo Guestbook -->
     <div class="addon-card" id="card-guestbook" onclick="toggleAddon('guestbook')" style="border-radius:16px;border:3px solid transparent;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;transition:all .18s;cursor:pointer;position:relative;background:#fff">
       <div class="addon-selected-badge">✓ Selected</div>
-      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Photobook.png" alt="Photo Guestbook" style="width:100%;height:200px;object-fit:cover;display:block" onclick="event.stopPropagation();openLightbox(this.src,'Photo Guestbook')"/>
-      <div style="padding:14px 16px 14px;position:relative">
-        <div style="font-weight:800;font-size:15px;color:#1a1a1a">Photo Guestbook</div>
-        <div style="font-size:13px;color:#aaa;margin-top:3px">From RM70</div>
+      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/Photobook.png" alt="Photo Guestbook" style="width:100%;height:160px;object-fit:cover;display:block" onclick="event.stopPropagation();openLightbox(this.src,'Photo Guestbook')"/>
+      <div style="padding:12px 12px 12px;position:relative;min-height:70px">
+        <div style="font-weight:800;font-size:13px;color:#1a1a1a">Photo Guestbook</div>
+        <div style="font-size:12px;color:#aaa;margin-top:2px">From RM70</div>
         <div class="addon-cb-corner"><div class="cb" id="cb-guestbook"></div></div>
       </div>
       <div class="addon-body" id="body-guestbook">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px">Select type (required):</div>
+        <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px">Select type:</div>
         <div class="type-row">
           <div class="type-btn selected" id="gb-standard" onclick="event.stopPropagation();setGbType('standard')"><div class="tname">Standard</div><div class="tprice">RM70</div></div>
           <div class="type-btn" id="gb-custom" onclick="event.stopPropagation();setGbType('custom')"><div class="tname">Customization</div><div class="tprice">RM100</div></div>
         </div>
         <label class="agree-line" style="margin-top:0;border:none;padding:0;background:none" onclick="event.stopPropagation();toggleMatte()">
           <div class="cb cb-sm" id="cb-matte"></div>
-          <span style="font-size:13px;color:#444;font-weight:400">Matte Cover <strong style="color:var(--red)">+RM15</strong> (optional)</span>
+          <span style="font-size:12px;color:#444">Matte Cover <strong style="color:var(--red)">+RM15</strong></span>
         </label>
-        <div class="gb-note" style="margin-top:8px">100 pages · A4 landscape · Inner page print (one side)</div>
+        <div style="font-size:10px;color:#999;margin-top:6px">100 pages · A4 landscape · One side print</div>
       </div>
     </div>
 
     <!-- d. Photo Keychain -->
     <div class="addon-card" id="card-keychain" onclick="toggleAddon('keychain')" style="border-radius:16px;border:3px solid transparent;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;transition:all .18s;cursor:pointer;position:relative;background:#fff">
       <div class="addon-selected-badge">✓ Selected</div>
-      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/KeyChain.png" alt="Photo Keychain" style="width:100%;height:200px;object-fit:cover;display:block" onclick="event.stopPropagation();openLightbox(this.src,'Photo Keychain')"/>
-      <div style="padding:14px 16px 14px;position:relative">
-        <div style="font-weight:800;font-size:15px;color:#1a1a1a">Photo Keychain</div>
-        <div style="font-size:13px;color:#aaa;margin-top:3px">MOQ 100 pcs</div>
+      <img src="https://raw.githubusercontent.com/loveaphotobooth/BookingForm/main/KeyChain.png" alt="Photo Keychain" style="width:100%;height:160px;object-fit:cover;display:block" onclick="event.stopPropagation();openLightbox(this.src,'Photo Keychain')"/>
+      <div style="padding:12px 12px 12px;position:relative;min-height:70px">
+        <div style="font-weight:800;font-size:13px;color:#1a1a1a">Photo Keychain</div>
+        <div style="font-size:12px;color:#aaa;margin-top:2px">MOQ 100 pcs</div>
         <div class="addon-cb-corner"><div class="cb" id="cb-keychain"></div></div>
       </div>
-      <div class="addon-body" id="body-keychain">
-        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px">Select quantity &amp; enter amount:</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-100" onclick="event.stopPropagation();setKcRow('100','RM300')">
+      <div class="addon-body" id="body-keychain" style="grid-column:span 1">
+        <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">Select quantity:</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border-radius:8px;border:2px solid #ddd;background:#fafafa" id="kc-row-100" onclick="event.stopPropagation();setKcRow('100','RM300')">
             <div class="cb cb-sm" id="kc-cb-100"></div>
-            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">100 pcs</div><div style="font-size:12px;color:var(--red);font-weight:600">RM300</div></div>
+            <div><div style="font-weight:700;font-size:12px">100 pcs</div><div style="font-size:11px;color:var(--red);font-weight:600">RM300</div></div>
           </label>
-          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-200" onclick="event.stopPropagation();setKcRow('200','RM550')">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border-radius:8px;border:2px solid #ddd;background:#fafafa" id="kc-row-200" onclick="event.stopPropagation();setKcRow('200','RM550')">
             <div class="cb cb-sm" id="kc-cb-200"></div>
-            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">200 pcs</div><div style="font-size:12px;color:var(--red);font-weight:600">RM550</div></div>
+            <div><div style="font-weight:700;font-size:12px">200 pcs</div><div style="font-size:11px;color:var(--red);font-weight:600">RM550</div></div>
           </label>
-          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-300" onclick="event.stopPropagation();setKcRow('300','RM800')">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border-radius:8px;border:2px solid #ddd;background:#fafafa" id="kc-row-300" onclick="event.stopPropagation();setKcRow('300','RM800')">
             <div class="cb cb-sm" id="kc-cb-300"></div>
-            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">300 pcs</div><div style="font-size:12px;color:var(--red);font-weight:600">RM800</div></div>
+            <div><div style="font-weight:700;font-size:12px">300 pcs</div><div style="font-size:11px;color:var(--red);font-weight:600">RM800</div></div>
           </label>
-          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border-radius:10px;border:2px solid #ddd;background:#fafafa;transition:all .15s" id="kc-row-more" onclick="event.stopPropagation();setKcRow('More','Contact us')">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 10px;border-radius:8px;border:2px solid #ddd;background:#fafafa" id="kc-row-more" onclick="event.stopPropagation();setKcRow('More','Contact us')">
             <div class="cb cb-sm" id="kc-cb-more"></div>
-            <div style="flex:1"><div style="font-weight:700;font-size:13px;color:#1a1a1a">More</div><div style="font-size:12px;color:var(--red);font-weight:600">Contact us</div></div>
+            <div><div style="font-weight:700;font-size:12px">More</div><div style="font-size:11px;color:var(--red);font-weight:600">Contact us</div></div>
           </label>
         </div>
-        <div style="margin-top:12px">
-          <div style="font-size:12px;font-weight:700;color:#555;margin-bottom:6px">Enter quantity (optional):</div>
-          <input type="number" id="kcCustomQty" min="100" placeholder="e.g. 150" onclick="event.stopPropagation()" style="width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid #e0d0d0;background:#f8f5f5;font-size:14px;color:#333;outline:none;font-family:inherit"/>
+        <div style="margin-top:10px">
+          <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:4px">Custom quantity:</div>
+          <input type="number" id="kcCustomQty" min="100" placeholder="e.g. 150" onclick="event.stopPropagation()" style="width:100%;padding:8px 10px;border-radius:8px;border:1.5px solid #e0d0d0;background:#f8f5f5;font-size:13px;color:#333;outline:none;font-family:inherit"/>
         </div>
       </div>
     </div>
